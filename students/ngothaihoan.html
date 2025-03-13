@@ -8,96 +8,418 @@
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/custom.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://source.unsplash.com/1600x900/?technology');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 40px;
+        }
+        
+        .profile-image {
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            max-width: 250px;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .section {
+            padding: 60px 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .skill-badge {
+            margin: 10px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .project-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .project-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-card .card-body {
+            padding: 25px;
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .contact-section {
+            background-color: var(--light-color);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            padding: 30px 0;
+        }
+        
+        .education-item {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary-color);
+        }
+        
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
+
 <body>
     <!-- HEADER -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Ngô Thái Hoàn</a>
+            <a class="navbar-brand" href="#">NT HOÀN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Trang chủ</a>
+                        <a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Portfolio</a>
+                        <a class="nav-link active" href="#"><i class="fas fa-briefcase"></i> Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="fas fa-user"></i> Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills"><i class="fas fa-code"></i> Kỹ năng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects"><i class="fas fa-project-diagram"></i> Dự án</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Liên hệ</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- THÔNG TIN CÁ NHÂN -->
-    <section class="container mt-5">
-        <div class="row align-items-center">
-            <div class="col-md-4 text-center">
-                <img src="https://source.unsplash.com/200x200/?person" alt="Ngô Thái Hoàn" class="rounded-circle img-fluid">
+    <!-- HERO SECTION -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 fade-in">
+                    <h1 class="display-4 fw-bold mb-4">NGÔ THÁI HOÀN</h1>
+                    <p class="lead mb-5">Software Engineer chuyên Backend Developer</p>
+                    <a href="#contact" class="btn btn-outline-light btn-lg px-5">Liên hệ ngay</a>
+                </div>
             </div>
-            <div class="col-md-8">
-                <h2>Thông tin cá nhân</h2>
-                <p><strong>Họ tên:</strong> Ngô Thái Hoàn</p>
-                <p><strong>Sở thích:</strong> Lập trình, đọc sách, thể thao</p>
-                <p><strong>Định hướng nghề nghiệp:</strong> Software Engineer chuyên Backend.</p>
+        </div>
+    </section>
+
+    <!-- THÔNG TIN CÁ NHÂN -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">GIỚI THIỆU</h2>
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <img src="../assets/images/ngothaihoan/ngothaihoan.jpg" alt="Ngô Thái Hoàn" class="rounded-circle img-fluid profile-image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="mb-3">Về tôi</h3>
+                            <p class="lead">Tôi là một Backend Developer với đam mê xây dựng các hệ thống phần mềm hiệu suất cao, có khả năng mở rộng và đáng tin cậy.</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <p><strong><i class="fas fa-user me-2"></i> Họ tên:</strong> Ngô Thái Hoàn</p>
+                                    <p><strong><i class="fas fa-heart me-2"></i> Sở thích:</strong> Lập trình, đọc sách, thể thao</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong><i class="fas fa-briefcase me-2"></i> Định hướng:</strong> Software Engineer chuyên Backend</p>
+                                    <p><strong><i class="fas fa-envelope me-2"></i> Email:</strong> ngothaihoan@example.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- QUÁ TRÌNH HỌC TẬP -->
-    <section class="container mt-5">
-        <h2 class="text-center">Quá trình học tập</h2>
-        <ul class="list-group">
-            <li class="list-group-item"><strong>🎓 Đại học XYZ</strong> - Chuyên ngành: Công nghệ thông tin</li>
-            <li class="list-group-item"><strong>📚 Các môn học quan trọng:</strong> Lập trình Java, CSDL, Web Development</li>
-            <li class="list-group-item"><strong>🚀 Dự án:</strong> Hệ thống tuyển dụng với Spring Boot & ArangoDB</li>
-        </ul>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title text-center">QUÁ TRÌNH HỌC TẬP</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="education-item">
+                        <h4><i class="fas fa-graduation-cap me-2"></i> Đại học XYZ</h4>
+                        <p class="text-muted">2019 - 2023</p>
+                        <p><strong>Chuyên ngành:</strong> Công nghệ thông tin</p>
+                    </div>
+                    
+                    <div class="education-item">
+                        <h4><i class="fas fa-book me-2"></i> Các môn học quan trọng</h4>
+                        <p>Lập trình Java, Cơ sở dữ liệu, Phát triển Web, Cấu trúc dữ liệu và giải thuật, OOP</p>
+                    </div>
+                    
+                    <div class="education-item">
+                        <h4><i class="fas fa-project-diagram me-2"></i> Dự án học tập</h4>
+                        <p>Hệ thống tuyển dụng với Spring Boot & ArangoDB</p>
+                        <p>Đề tài tốt nghiệp: Xây dựng ứng dụng quản lý nhân sự với microservices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- KỸ NĂNG -->
-    <section class="container mt-5">
-        <h2 class="text-center">Kỹ năng đạt được</h2>
-        <div class="row text-center">
-            <div class="col-md-2"><span class="badge bg-primary p-3">Java</span></div>
-            <div class="col-md-2"><span class="badge bg-success p-3">Spring Boot</span></div>
-            <div class="col-md-2"><span class="badge bg-warning p-3">MySQL</span></div>
-            <div class="col-md-2"><span class="badge bg-info p-3">PostgreSQL</span></div>
-            <div class="col-md-2"><span class="badge bg-secondary p-3">React.js</span></div>
-            <div class="col-md-2"><span class="badge bg-danger p-3">Node.js</span></div>
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">KỸ NĂNG CHUYÊN MÔN</h2>
+            
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <h4>Ngôn ngữ lập trình</h4>
+                    <p>Java</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 90%"></div>
+                    </div>
+                    
+                    <p>JavaScript</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 75%"></div>
+                    </div>
+                    
+                    <p>Python</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 65%"></div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h4>Framework & Công nghệ</h4>
+                    <p>Spring Boot</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 85%"></div>
+                    </div>
+                    
+                    <p>React.js</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    
+                    <p>Node.js</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <h4 class="mb-4">Công nghệ khác</h4>
+                <span class="badge bg-primary skill-badge">Java</span>
+                <span class="badge bg-success skill-badge">Spring Boot</span>
+                <span class="badge bg-warning skill-badge text-dark">MySQL</span>
+                <span class="badge bg-info skill-badge text-dark">PostgreSQL</span>
+                <span class="badge bg-secondary skill-badge">React.js</span>
+                <span class="badge bg-danger skill-badge">Node.js</span>
+                <span class="badge bg-dark skill-badge">Git</span>
+                <span class="badge bg-primary skill-badge">Docker</span>
+                <span class="badge bg-success skill-badge">REST API</span>
+                <span class="badge bg-warning skill-badge text-dark">Microservices</span>
+            </div>
         </div>
     </section>
 
     <!-- DỰ ÁN -->
-    <section class="container mt-5">
-        <h2 class="text-center">Dự án cá nhân</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://source.unsplash.com/400x300/?coding" class="card-img-top" alt="Dự án 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Hệ thống tuyển dụng</h5>
-                        <p class="card-text">Xây dựng với Spring Boot & ArangoDB.</p>
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">DỰ ÁN NỔI BẬT</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="project-card card">
+                        <img src="https://source.unsplash.com/400x300/?coding" class="card-img-top" alt="Dự án 1">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-briefcase me-2"></i>Hệ thống tuyển dụng</h5>
+                            <p class="card-text">Xây dựng hệ thống tuyển dụng toàn diện với Spring Boot & ArangoDB. Hỗ trợ tìm kiếm, lọc và đánh giá ứng viên.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-primary me-1">Java</span>
+                                <span class="badge bg-success me-1">Spring Boot</span>
+                                <span class="badge bg-info me-1">ArangoDB</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="fas fa-link me-1"></i> Demo</a>
+                                <a href="#" class="btn btn-outline-dark btn-sm"><i class="fab fa-github me-1"></i> GitHub</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://source.unsplash.com/400x300/?software" class="card-img-top" alt="Dự án 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Ứng dụng luyện thi</h5>
-                        <p class="card-text">Dùng Micronaut & Flutter.</p>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card card">
+                        <img src="https://source.unsplash.com/400x300/?software" class="card-img-top" alt="Dự án 2">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-mobile-alt me-2"></i>Ứng dụng luyện thi</h5>
+                            <p class="card-text">Phát triển ứng dụng đa nền tảng giúp học sinh luyện thi với các chức năng flashcards, quiz và thống kê tiến độ.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-warning me-1 text-dark">Micronaut</span>
+                                <span class="badge bg-primary me-1">Flutter</span>
+                                <span class="badge bg-success me-1">PostgreSQL</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="fas fa-link me-1"></i> Demo</a>
+                                <a href="#" class="btn btn-outline-dark btn-sm"><i class="fab fa-github me-1"></i> GitHub</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://source.unsplash.com/400x300/?technology" class="card-img-top" alt="Dự án 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Website bán điện thoại</h5>
-                        <p class="card-text">Sử dụng React.js & Node.js.</p>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card card">
+                        <img src="https://source.unsplash.com/400x300/?technology" class="card-img-top" alt="Dự án 3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-shopping-cart me-2"></i>Website bán điện thoại</h5>
+                            <p class="card-text">Xây dựng website thương mại điện tử bán điện thoại với đầy đủ tính năng giỏ hàng, thanh toán và đánh giá sản phẩm.</p>
+                            <div class="mt-3">
+                                <span class="badge bg-secondary me-1">React.js</span>
+                                <span class="badge bg-danger me-1">Node.js</span>
+                                <span class="badge bg-warning me-1 text-dark">MongoDB</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="fas fa-link me-1"></i> Demo</a>
+                                <a href="#" class="btn btn-outline-dark btn-sm"><i class="fab fa-github me-1"></i> GitHub</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,19 +427,80 @@
     </section>
 
     <!-- LIÊN HỆ -->
-    <section class="container mt-5 text-center">
-        <h2>Liên hệ</h2>
-        <p>Email: <a href="mailto:ngothaihoan@example.com">ngothaihoan@example.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/ngothaihoan" target="_blank">linkedin.com/in/ngothaihoan</a></p>
-        <p>GitHub: <a href="https://github.com/ngothaihoan" target="_blank">github.com/ngothaihoan</a></p>
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title text-center">LIÊN HỆ</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-5">
+                            <div class="row">
+                                <div class="col-md-4 mb-4 mb-md-0">
+                                    <div class="rounded-circle bg-primary text-white mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-envelope fa-2x"></i>
+                                    </div>
+                                    <h5>Email</h5>
+                                    <p><a href="mailto:ngothaihoan@example.com" class="text-decoration-none">ngothaihoan@example.com</a></p>
+                                </div>
+                                <div class="col-md-4 mb-4 mb-md-0">
+                                    <div class="rounded-circle bg-primary text-white mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fab fa-linkedin fa-2x"></i>
+                                    </div>
+                                    <h5>LinkedIn</h5>
+                                    <p><a href="https://linkedin.com/in/ngothaihoan" target="_blank" class="text-decoration-none">linkedin.com/in/ngothaihoan</a></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="rounded-circle bg-primary text-white mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fab fa-github fa-2x"></i>
+                                    </div>
+                                    <h5>GitHub</h5>
+                                    <p><a href="https://github.com/ngothaihoan" target="_blank" class="text-decoration-none">github.com/ngothaihoan</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        &copy; 2025 Ngô Thái Hoàn. All rights reserved.
+    <footer class="footer text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Ngô Thái Hoàn. All rights reserved.</p>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Animation JS -->
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            
+            const fadeInOnScroll = function() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight * 0.75) {
+                        section.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Run once on page load
+        });
+    </script>
 </body>
 </html>
