@@ -1,0 +1,100 @@
+/* THÔNG TIN CÁ NHÂN */
+.about {
+    background: #f8f9fa;
+    padding: 50px 0;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.about img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+/* QUÁ TRÌNH HỌC TẬP */
+.education {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.education ul {
+    list-style: none;
+    padding: 0;
+}
+
+.education li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* KỸ NĂNG */
+.skills {
+    background: #e9ecef;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.skill-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-list span {
+    background: #3498db;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+/* DỰ ÁN CÁ NHÂN */
+.projects {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.project-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* LIÊN HỆ */
+.contact {
+    background: #2c3e50;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    background: #34495e;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
